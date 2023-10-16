@@ -15,10 +15,10 @@ import org.springframework.context.annotation.FullyQualifiedAnnotationBeanNameGe
     basePackages = {"com.brendon.crudcafe.invoker", "com.brendon.crudcafe.api" , "com.brendon.crudcafe.configuration"},
     nameGenerator = FullyQualifiedAnnotationBeanNameGenerator.class
 )
-public class OpenApiGeneratorApplication {
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(OpenApiGeneratorApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
     @Bean(name = "com.brendon.crudcafe.invoker.OpenApiGeneratorApplication.jsonNullableModule")

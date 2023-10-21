@@ -12,7 +12,14 @@ import org.springframework.context.annotation.FullyQualifiedAnnotationBeanNameGe
     nameGenerator = FullyQualifiedAnnotationBeanNameGenerator.class
 )
 @ComponentScan(
-    basePackages = {"com.brendon.crudcafe.invoker", "com.brendon.crudcafe.api" , "com.brendon.crudcafe.configuration"},
+    basePackages = {
+            "com.brendon.crudcafe.invoker",
+            "com.brendon.crudcafe.api",
+            "com.brendon.crudcafe.configuration",
+            "com.brendon.crudcafe.repository",
+            "com.brendon.crudcafe.service"
+
+    },
     nameGenerator = FullyQualifiedAnnotationBeanNameGenerator.class
 )
 public class Application {

@@ -23,10 +23,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.NativeWebRequest;
 
 import java.util.List;
@@ -45,6 +42,7 @@ public interface CafesApi {
     /**
      * POST /cafes : Create a cafe
      *
+     * @param cafe  (required)
      * @return Null response (status code 201)
      *         or unexpected error (status code 200)
      */
@@ -62,10 +60,11 @@ public interface CafesApi {
     @RequestMapping(
         method = RequestMethod.POST,
         value = "/cafes",
-        produces = { "application/json" }
+        produces = { "application/json" },
+        consumes = { "application/json" }
     )
     default ResponseEntity<Void> createCafe(
-        
+        @Parameter(name = "Cafe", description = "", required = true) @Valid @RequestBody Cafe cafe
     ) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 

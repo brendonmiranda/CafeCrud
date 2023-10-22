@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.NativeWebRequest;
 
+import java.util.List;
 import java.util.Optional;
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
@@ -32,15 +33,20 @@ public class CafesApiController implements CafesApi {
     }
 
     @Override
-    public ResponseEntity<Void> createCafe() {
-        final Cafe cafe = new Cafe(1L, "First Cafe");
-
-        try {
-            cafeService.createCafe(cafe);
-        } catch (Exception e) {
-            throw new RuntimeException("Unable to create a cafe.", e);
-        }
-
+    public ResponseEntity<Void> createCafe(Cafe cafe) {
+        cafeService.createCafe(cafe);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
+    @Override
+    public ResponseEntity<List<Cafe>> listCafes(Integer limit) {
+        return new ResponseEntity<>(cafeService.listCafes(), HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<Cafe> showCafeById(String cafeId) {
+        return new ResponseEntity<>(cafeService.getCafeById(cafeId), HttpStatus.OK);
+    }
+
+
 }
